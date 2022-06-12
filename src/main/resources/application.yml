@@ -9,3 +9,11 @@ spring:
       enabled: true
   jpa:
     spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+
+loan:
+  amount:
+    max: 10000
+    min: 100
+  term:
+    max: 30
+    min: 365
