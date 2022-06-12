@@ -21,7 +21,9 @@ public class LoanApplicationService {
     }
 
     public ApplicationStatus apply(LoanApplicationDto loanApplicationDto) {
-        boolean validationResult = validators.stream().map(validator -> validator.isValid(loanApplicationDto)).anyMatch(val -> !val);
+        boolean validationResult = validators
+                .stream()
+                .allMatch(validator -> validator.isValid(loanApplicationDto));
 
         if (validationResult) {
             loanCreatorService.createLoan(loanApplicationDto);
