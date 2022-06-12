@@ -1,37 +1,33 @@
 package com.example.interviewtask.loan.service;
 
 import com.example.interviewtask.loan.dto.LoanApplicationDto;
-import com.example.interviewtask.loan.entity.LoanEntity;
-import com.example.interviewtask.loan.entity.LoanEntityBuilder;
 import com.example.interviewtask.loan.enumeration.ApplicationStatus;
-import com.example.interviewtask.repository.LoanRepository;
+import com.example.interviewtask.loan.service.validation.LoanApplicationValidation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
+import java.util.Set;
 
 @Service
 public class LoanApplicationService {
 
-    private final LoanRepository loanRepository;
+    private final LoanCreatorService loanCreatorService;
+    private final Set<LoanApplicationValidation> validators;
 
     @Autowired
-    public LoanApplicationService(LoanRepository loanRepository) {
-        this.loanRepository = loanRepository;
+    public LoanApplicationService(LoanCreatorService loanCreatorService, Set<LoanApplicationValidation> validators) {
+        this.loanCreatorService = loanCreatorService;
+        this.validators = validators;
     }
 
     public ApplicationStatus apply(LoanApplicationDto loanApplicationDto) {
-        LoanEntity loanEntity = LoanEntityBuilder.aLoanEntity()
-                .withAmmount(loanApplicationDto.getAmmount())
-                .withDueDate(calculateDueDate(loanApplicationDto))
-                .build();
+        boolean validationResult = validators.stream().map(validator -> validator.isValid(loanApplicationDto)).anyMatch(val -> !val);
 
-        loanRepository.save(loanEntity);
-
-        return ApplicationStatus.SUCCESS;
-    }
-
-    private LocalDate calculateDueDate(LoanApplicationDto loanApplicationDto) {
-        return loanApplicationDto.getCreationDate().plusDays(loanApplicationDto.getTerm());
+        if (validationResult) {
+            loanCreatorService.createLoan(loanApplicationDto);
+            return ApplicationStatus.SUCCESS;
+        } else {
+            return ApplicationStatus.REJECTED;
+        }
     }
 }
