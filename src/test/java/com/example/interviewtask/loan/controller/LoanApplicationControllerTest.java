@@ -17,7 +17,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
@@ -49,7 +49,7 @@ public class LoanApplicationControllerTest {
                 .aLoanApplicationDto()
                 .withTerm(40)
                 .withAmmount(BigDecimal.TEN)
-                .withCreationDate(LocalDate.now())
+                .withCreationDate(LocalDateTime.now())
                 .build();
 
         when(loanApplicationService.apply(any(LoanApplicationDto.class))).thenReturn(ApplicationStatus.SUCCESS);

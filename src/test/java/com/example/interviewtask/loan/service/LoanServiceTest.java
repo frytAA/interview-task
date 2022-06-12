@@ -10,7 +10,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
@@ -32,7 +32,7 @@ public class LoanServiceTest {
     @Test
     public void saveLoan() {
         // given
-        LocalDate dueDate = LocalDate.now();
+        LocalDateTime dueDate = LocalDateTime.now();
         LoanEntity loanEntity = buildLoanEntity(dueDate);
         when(loanRepository.save(loanEntity)).thenReturn(loanEntity);
 
@@ -45,7 +45,7 @@ public class LoanServiceTest {
         verify(loanRepository).save(loanEntity);
     }
 
-    private LoanEntity buildLoanEntity(LocalDate dueDate) {
+    private LoanEntity buildLoanEntity(LocalDateTime dueDate) {
         return LoanEntityBuilder
                 .aLoanEntity()
                 .withAmmount(AMOUNT)
@@ -57,7 +57,7 @@ public class LoanServiceTest {
     @Test
     public void getLoan() {
         // given
-        LocalDate dueDate = LocalDate.now();
+        LocalDateTime dueDate = LocalDateTime.now();
         LoanEntity loanEntity = buildLoanEntity(dueDate);
         when(loanRepository.findById(ID)).thenReturn(Optional.of(loanEntity));
 

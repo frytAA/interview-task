@@ -9,7 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "LOAN")
@@ -19,7 +19,7 @@ public class LoanEntity extends BaseEntity {
 
     private BigDecimal ammount;
 
-    private LocalDate dueDate;
+    private LocalDateTime dueDate;
 
     public BigDecimal getAmmount() {
         return ammount;
@@ -29,11 +29,11 @@ public class LoanEntity extends BaseEntity {
         this.ammount = ammount;
     }
 
-    public LocalDate getDueDate() {
+    public LocalDateTime getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(LocalDate dueDate) {
+    public void setDueDate(LocalDateTime dueDate) {
         this.dueDate = dueDate;
     }
 

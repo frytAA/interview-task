@@ -2,11 +2,11 @@ package com.example.interviewtask.loan.dto;
 
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class LoanDto {
     private BigDecimal ammount;
-    private LocalDate dueDate;
+    private LocalDateTime dueDate;
 
     public BigDecimal getAmmount() {
         return ammount;
@@ -16,11 +16,11 @@ public class LoanDto {
         this.ammount = ammount;
     }
 
-    public LocalDate getDueDate() {
+    public LocalDateTime getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(LocalDate dueDate) {
+    public void setDueDate(LocalDateTime dueDate) {
         this.dueDate = dueDate;
     }
 }

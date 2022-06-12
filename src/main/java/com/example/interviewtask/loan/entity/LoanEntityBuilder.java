@@ -1,7 +1,6 @@
 package com.example.interviewtask.loan.entity;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 
@@ -9,7 +8,7 @@ public final class LoanEntityBuilder {
     private LocalDateTime creationDate = LocalDateTime.now(ZoneOffset.UTC);
     private LocalDateTime updateDate = null;
     private BigDecimal ammount;
-    private LocalDate dueDate;
+    private LocalDateTime dueDate;
 
     private LoanEntityBuilder() {
     }
@@ -33,7 +32,7 @@ public final class LoanEntityBuilder {
         return this;
     }
 
-    public LoanEntityBuilder withDueDate(LocalDate dueDate) {
+    public LoanEntityBuilder withDueDate(LocalDateTime dueDate) {
         this.dueDate = dueDate;
         return this;
     }

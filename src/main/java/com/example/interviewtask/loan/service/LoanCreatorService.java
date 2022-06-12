@@ -6,7 +6,7 @@ import com.example.interviewtask.loan.entity.LoanEntityBuilder;
 import com.example.interviewtask.repository.LoanRepository;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Service
 public class LoanCreatorService {
@@ -26,7 +26,7 @@ public class LoanCreatorService {
         return loanRepository.save(loanEntity);
     }
 
-    private LocalDate calculateDueDate(LoanApplicationDto loanApplicationDto) {
-        return loanApplicationDto.getCreationDate().plusDays(loanApplicationDto.getTerm());
+    private LocalDateTime calculateDueDate(LoanApplicationDto loanApplicationDto) {
+        return loanApplicationDto.getCreationDateTime().plusDays(loanApplicationDto.getTerm());
     }
 }

@@ -4,12 +4,12 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class LoanApplicationDto {
 
     @NotNull
-    private LocalDate creationDate;
+    private LocalDateTime creationDateTime;
 
     @NotNull
     private BigDecimal ammount;
@@ -19,12 +19,12 @@ public class LoanApplicationDto {
     @Max(365)
     private Integer term;
 
-    public LocalDate getCreationDate() {
-        return creationDate;
+    public LocalDateTime getCreationDateTime() {
+        return creationDateTime;
     }
 
-    public void setCreationDate(LocalDate creationDate) {
-        this.creationDate = creationDate;
+    public void setCreationDateTime(LocalDateTime creationDateTime) {
+        this.creationDateTime = creationDateTime;
     }
 
     public BigDecimal getAmmount() {

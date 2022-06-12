@@ -1,10 +1,10 @@
 package com.example.interviewtask.loan.dto;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public final class LoanApplicationDtoBuilder {
-    private LocalDate creationDate;
+    private LocalDateTime creationDate;
     private BigDecimal ammount;
     private Integer term;
 
@@ -15,7 +15,7 @@ public final class LoanApplicationDtoBuilder {
         return new LoanApplicationDtoBuilder();
     }
 
-    public LoanApplicationDtoBuilder withCreationDate(LocalDate creationDate) {
+    public LoanApplicationDtoBuilder withCreationDate(LocalDateTime creationDate) {
         this.creationDate = creationDate;
         return this;
     }
@@ -32,7 +32,7 @@ public final class LoanApplicationDtoBuilder {
 
     public LoanApplicationDto build() {
         LoanApplicationDto loanApplicationDto = new LoanApplicationDto();
-        loanApplicationDto.setCreationDate(creationDate);
+        loanApplicationDto.setCreationDateTime(creationDate);
         loanApplicationDto.setAmmount(ammount);
         loanApplicationDto.setTerm(term);
         return loanApplicationDto;

@@ -7,7 +7,7 @@ import com.example.interviewtask.loan.entity.LoanEntityBuilder;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
@@ -18,7 +18,7 @@ public class LoanMapperTest {
     @Test
     public void toDto() {
         // given
-        LocalDate dueDate = LocalDate.now();
+        LocalDateTime dueDate = LocalDateTime.now();
         LoanEntity loanEntity = LoanEntityBuilder
                 .aLoanEntity()
                 .withAmmount(BigDecimal.TEN)
@@ -36,7 +36,7 @@ public class LoanMapperTest {
     @Test
     public void toEntity() {
         // given
-        LocalDate dueDate = LocalDate.now();
+        LocalDateTime dueDate = LocalDateTime.now();
         LoanDto loanDto = LoanDtoBuilder
                 .aLoanDto()
                 .withAmmount(BigDecimal.TEN)
