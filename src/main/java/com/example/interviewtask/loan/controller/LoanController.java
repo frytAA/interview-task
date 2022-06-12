@@ -1,6 +1,7 @@
 package com.example.interviewtask.loan.controller;
 
 import com.example.interviewtask.loan.dto.LoanDto;
+import com.example.interviewtask.loan.mapper.LoanMapper;
 import com.example.interviewtask.loan.service.LoanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -15,15 +16,21 @@ import org.springframework.web.bind.annotation.RestController;
 public class LoanController {
 
     private final LoanService loanService;
+    private final LoanMapper loanMapper;
 
     @Autowired
-    public LoanController(LoanService loanService) {
+    public LoanController(LoanService loanService, LoanMapper loanMapper) {
         this.loanService = loanService;
+        this.loanMapper = loanMapper;
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE, value = "/get")
     public ResponseEntity<LoanDto> getLoan(@PathVariable(name = "loanId") Long loanId) {
-        return ResponseEntity.ok(new LoanDto());
+        return loanService.
+                getLoan(loanId)
+                .map(loanMapper::toDto)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.noContent().build());
     }
 
 }

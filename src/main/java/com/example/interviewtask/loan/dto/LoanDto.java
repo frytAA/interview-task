@@ -6,7 +6,6 @@ import java.time.LocalDate;
 
 public class LoanDto {
     private BigDecimal ammount;
-
     private LocalDate dueDate;
 
     public BigDecimal getAmmount() {
