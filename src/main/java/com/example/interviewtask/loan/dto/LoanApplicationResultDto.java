@@ -5,6 +5,13 @@ import com.example.interviewtask.loan.enumeration.ApplicationStatus;
 public class LoanApplicationResultDto {
     private ApplicationStatus applicationStatus;
 
+    public LoanApplicationResultDto() {
+    }
+
+    public LoanApplicationResultDto(ApplicationStatus applicationStatus) {
+        this.applicationStatus = applicationStatus;
+    }
+
     public ApplicationStatus getApplicationStatus() {
         return applicationStatus;
     }
