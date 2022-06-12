@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 public final class LoanDtoBuilder {
     private BigDecimal ammount;
     private LocalDateTime dueDate;
+    private Integer term;
 
     private LoanDtoBuilder() {
     }
@@ -24,10 +25,16 @@ public final class LoanDtoBuilder {
         return this;
     }
 
+    public LoanDtoBuilder withTerm(Integer term) {
+        this.term = term;
+        return this;
+    }
+
     public LoanDto build() {
         LoanDto loanDto = new LoanDto();
         loanDto.setAmmount(ammount);
         loanDto.setDueDate(dueDate);
+        loanDto.setTerm(term);
         return loanDto;
     }
 }

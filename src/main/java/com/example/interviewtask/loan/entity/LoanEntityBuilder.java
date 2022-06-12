@@ -9,6 +9,7 @@ public final class LoanEntityBuilder {
     private LocalDateTime updateDate = null;
     private BigDecimal ammount;
     private LocalDateTime dueDate;
+    private Integer term;
 
     private LoanEntityBuilder() {
     }
@@ -37,12 +38,18 @@ public final class LoanEntityBuilder {
         return this;
     }
 
+    public LoanEntityBuilder withTerm(Integer term) {
+        this.term = term;
+        return this;
+    }
+
     public LoanEntity build() {
         LoanEntity loanEntity = new LoanEntity();
         loanEntity.setCreationDate(creationDate);
         loanEntity.setUpdateDate(updateDate);
         loanEntity.setAmmount(ammount);
         loanEntity.setDueDate(dueDate);
+        loanEntity.setTerm(term);
         return loanEntity;
     }
 }

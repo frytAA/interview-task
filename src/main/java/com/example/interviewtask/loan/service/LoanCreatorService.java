@@ -21,6 +21,7 @@ public class LoanCreatorService {
         LoanEntity loanEntity = LoanEntityBuilder.aLoanEntity()
                 .withAmmount(loanApplicationDto.getAmmount())
                 .withDueDate(calculateDueDate(loanApplicationDto))
+                .withTerm(loanApplicationDto.getTerm())
                 .build();
 
         return loanRepository.save(loanEntity);

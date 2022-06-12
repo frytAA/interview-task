@@ -3,7 +3,7 @@ package com.example.interviewtask.loan.controller;
 import com.example.interviewtask.loan.dto.LoanDto;
 import com.example.interviewtask.loan.entity.LoanEntity;
 import com.example.interviewtask.loan.mapper.LoanMapper;
-import com.example.interviewtask.loan.service.LoanService;
+import com.example.interviewtask.loan.service.LoanExtensionService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -16,27 +16,27 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import java.util.Optional;
 
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @ExtendWith(MockitoExtension.class)
-public class LoanControllerTest {
+class LoanExtensionControllerTest {
 
     MockMvc mockMvc;
 
     @Mock
-    private LoanService loanService;
+    private LoanExtensionService loanExtensionService;
 
     @Mock
     private LoanMapper loanMapper;
 
     @InjectMocks
-    private LoanController loanController;
+    private LoanExtensionController loanExtensionController;
 
     @BeforeEach
     void setUp() {
         mockMvc = MockMvcBuilders
-                .standaloneSetup(loanController)
+                .standaloneSetup(loanExtensionController)
                 .build();
     }
 
@@ -44,17 +44,17 @@ public class LoanControllerTest {
     public void statusOkWhenLoanExists() throws Exception {
         // given
         LoanEntity loanEntity = new LoanEntity();
-        when(loanService.getLoan(1L)).thenReturn(Optional.of(loanEntity));
+        when(loanExtensionService.extendLoan(1L)).thenReturn(Optional.of(loanEntity));
         when(loanMapper.toDto(loanEntity)).thenReturn(new LoanDto());
 
         // when then
-        this.mockMvc.perform(get("/api/loans/1/get/"))
+        this.mockMvc.perform(put("/api/loans/1/extend/"))
                 .andExpect(status().isOk());
     }
 
     @Test
     public void noContentForNotExistingLoan() throws Exception {
-        this.mockMvc.perform(get("/api/loans/1/get/"))
+        this.mockMvc.perform(put("/api/loans/1/extend/"))
                 .andExpect(status().isNoContent());
     }
 }

@@ -21,6 +21,8 @@ public class LoanEntity extends BaseEntity {
 
     private LocalDateTime dueDate;
 
+    private Integer term;
+
     public BigDecimal getAmmount() {
         return ammount;
     }
@@ -35,6 +37,14 @@ public class LoanEntity extends BaseEntity {
 
     public void setDueDate(LocalDateTime dueDate) {
         this.dueDate = dueDate;
+    }
+
+    public Integer getTerm() {
+        return term;
+    }
+
+    public void setTerm(Integer term) {
+        this.term = term;
     }
 
     @Override

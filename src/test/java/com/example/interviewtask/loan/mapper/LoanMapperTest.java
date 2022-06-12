@@ -13,6 +13,7 @@ import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 public class LoanMapperTest {
 
+    private static final int TERM_DAYS = 30;
     private final LoanMapper loanMapper = new LoanMapperImpl();
 
     @Test
@@ -23,6 +24,7 @@ public class LoanMapperTest {
                 .aLoanEntity()
                 .withAmmount(BigDecimal.TEN)
                 .withDueDate(dueDate)
+                .withTerm(TERM_DAYS)
                 .build();
 
         // when
@@ -31,6 +33,7 @@ public class LoanMapperTest {
         // then
         assertThat(loanDto.getDueDate()).isEqualTo(dueDate);
         assertThat(loanDto.getAmmount()).isEqualTo(BigDecimal.TEN);
+        assertThat(loanDto.getTerm()).isEqualTo(TERM_DAYS);
     }
 
     @Test
@@ -41,6 +44,7 @@ public class LoanMapperTest {
                 .aLoanDto()
                 .withAmmount(BigDecimal.TEN)
                 .withDueDate(dueDate)
+                .withTerm(TERM_DAYS)
                 .build();
 
         // when
@@ -49,5 +53,6 @@ public class LoanMapperTest {
         // then
         assertThat(loanEntity.getDueDate()).isEqualTo(dueDate);
         assertThat(loanEntity.getAmmount()).isEqualTo(BigDecimal.TEN);
+        assertThat(loanEntity.getTerm()).isEqualTo(TERM_DAYS);
     }
 }

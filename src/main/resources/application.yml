@@ -15,8 +15,8 @@ loan:
     max: 10000
     min: 100
   term:
-    max: 30
-    min: 365
+    min: 30
+    max: 365
   nightHour:
     start: 0
     end: 6

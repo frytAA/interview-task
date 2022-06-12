@@ -2,32 +2,30 @@ package com.example.interviewtask.loan.controller;
 
 import com.example.interviewtask.loan.dto.LoanDto;
 import com.example.interviewtask.loan.mapper.LoanMapper;
-import com.example.interviewtask.loan.service.LoanService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.interviewtask.loan.service.LoanExtensionService;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/loans/{loanId}")
-public class LoanController {
+public class LoanExtensionController {
 
-    private final LoanService loanService;
+    private final LoanExtensionService loanExtensionService;
     private final LoanMapper loanMapper;
 
-    @Autowired
-    public LoanController(LoanService loanService, LoanMapper loanMapper) {
-        this.loanService = loanService;
+    public LoanExtensionController(LoanExtensionService loanExtensionService, LoanMapper loanMapper) {
+        this.loanExtensionService = loanExtensionService;
         this.loanMapper = loanMapper;
     }
 
-    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE, value = "/get")
-    public ResponseEntity<LoanDto> getLoan(@PathVariable(name = "loanId") Long loanId) {
-        return loanService
-                .getLoan(loanId)
+    @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE, value = "/extend")
+    public ResponseEntity<LoanDto> extendLoan(@PathVariable(name = "loanId") Long loanId) {
+        return loanExtensionService
+                .extendLoan(loanId)
                 .map(loanMapper::toDto)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.noContent().build());

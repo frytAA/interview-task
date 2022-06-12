@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 public class LoanDto {
     private BigDecimal ammount;
     private LocalDateTime dueDate;
+    private Integer term;
 
     public BigDecimal getAmmount() {
         return ammount;
@@ -22,5 +23,13 @@ public class LoanDto {
 
     public void setDueDate(LocalDateTime dueDate) {
         this.dueDate = dueDate;
+    }
+
+    public Integer getTerm() {
+        return term;
+    }
+
+    public void setTerm(Integer term) {
+        this.term = term;
     }
 }
