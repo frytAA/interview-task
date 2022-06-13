@@ -20,3 +20,4 @@ loan:
   nightHour:
     start: 0
     end: 6
+  rate: 1.1

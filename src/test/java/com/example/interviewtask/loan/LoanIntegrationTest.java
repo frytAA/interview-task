@@ -34,6 +34,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class LoanIntegrationTest {
     private static final int TERM = 100;
     private static final BigDecimal AMOUNT = BigDecimal.valueOf(1000);
+    private final static BigDecimal RATE = BigDecimal.valueOf(1.1);
     private static final LocalDateTime LOAN_DUE_DATE = LocalDateTime.of(2022, 6, 12, 12, 0, 1);
     private static final LocalDateTime EXPECTED_DATE_AFTER_EXTENSION = LOAN_DUE_DATE.plusDays(TERM).plusDays(TERM);
 
@@ -70,7 +71,7 @@ public class LoanIntegrationTest {
         List<LoanEntity> loans = loanRepository.findAll();
         assertThat(loans).hasSize(1);
         assertThat(loans.get(0).getTerm()).isEqualTo(TERM);
-        assertThat(loans.get(0).getAmount()).isEqualTo(AMOUNT);
+        assertThat(loans.get(0).getAmount()).isEqualTo(AMOUNT.multiply(RATE));
         assertThat(loans.get(0).getDueDate()).isEqualTo(LOAN_DUE_DATE.plusDays(TERM));
     }
 
@@ -100,7 +101,6 @@ public class LoanIntegrationTest {
         // fetch
         this.mockMvc.perform(get("/api/loans/1/get/"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.amount").value(AMOUNT))
                 .andExpect(jsonPath("$.term").value(TERM))
                 .andExpect(jsonPath("$.dueDate", is(EXPECTED_DATE_AFTER_EXTENSION.toString())));
 
@@ -108,7 +108,7 @@ public class LoanIntegrationTest {
         List<LoanEntity> loans = loanRepository.findAll();
         assertThat(loans).hasSize(1);
         assertThat(loans.get(0).getTerm()).isEqualTo(TERM);
-        assertThat(loans.get(0).getAmount()).isEqualTo(AMOUNT);
+        assertThat(loans.get(0).getAmount()).isEqualTo(AMOUNT.multiply(RATE).multiply(RATE));
         assertThat(loans.get(0).getDueDate()).isEqualTo(LOAN_DUE_DATE.plusDays(TERM).plusDays(TERM).toString());
     }
 }

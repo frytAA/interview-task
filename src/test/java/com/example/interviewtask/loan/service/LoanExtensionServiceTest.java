@@ -9,6 +9,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
@@ -22,6 +23,8 @@ import static org.mockito.Mockito.when;
 class LoanExtensionServiceTest {
 
     private static final long ID = 1L;
+    private static final BigDecimal AMOUNT = BigDecimal.valueOf(1000);
+    private final static BigDecimal RATE = BigDecimal.valueOf(1.1);
 
     @Mock
     private LoanRepository loanRepository;
@@ -46,6 +49,7 @@ class LoanExtensionServiceTest {
         // then
         assertThat(result).isPresent();
         assertThat(result.get().getDueDate()).isEqualTo(LOAN_DUE_DATE.plusDays(TERM));
+        assertThat(result.get().getAmount()).isEqualTo(AMOUNT.multiply(RATE));
         verify(loanRepository).save(loanEntity);
     }
 
@@ -65,6 +69,7 @@ class LoanExtensionServiceTest {
                 .aLoanEntity()
                 .withDueDate(LOAN_DUE_DATE)
                 .withTerm(TERM)
+                .withAmount(AMOUNT)
                 .build();
     }
 
