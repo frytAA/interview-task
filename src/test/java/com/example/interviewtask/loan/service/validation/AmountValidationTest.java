@@ -29,7 +29,7 @@ class AmountValidationTest {
         // given
         LoanApplicationDto loanApplicationDto = LoanApplicationDtoBuilder
                 .aLoanApplicationDto()
-                .withAmmount(BigDecimal.valueOf(5000))
+                .withAmount(BigDecimal.valueOf(5000))
                 .build();
 
         //when
@@ -44,7 +44,7 @@ class AmountValidationTest {
         // given
         LoanApplicationDto loanApplicationDto = LoanApplicationDtoBuilder
                 .aLoanApplicationDto()
-                .withAmmount(BigDecimal.valueOf(99))
+                .withAmount(BigDecimal.valueOf(99))
                 .build();
 
         //when
@@ -59,7 +59,7 @@ class AmountValidationTest {
         // given
         LoanApplicationDto loanApplicationDto = LoanApplicationDtoBuilder
                 .aLoanApplicationDto()
-                .withAmmount(BigDecimal.valueOf(10001))
+                .withAmount(BigDecimal.valueOf(10001))
                 .build();
 
         //when
@@ -74,7 +74,7 @@ class AmountValidationTest {
         // given
         LoanApplicationDto loanApplicationDto = LoanApplicationDtoBuilder
                 .aLoanApplicationDto()
-                .withAmmount(BigDecimal.valueOf(MIN_LIMIT))
+                .withAmount(BigDecimal.valueOf(MIN_LIMIT))
                 .build();
 
         //when
@@ -89,7 +89,7 @@ class AmountValidationTest {
         // given
         LoanApplicationDto loanApplicationDto = LoanApplicationDtoBuilder
                 .aLoanApplicationDto()
-                .withAmmount(BigDecimal.valueOf(MAX_LIMIT))
+                .withAmount(BigDecimal.valueOf(MAX_LIMIT))
                 .build();
 
         //when

@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 public final class LoanDtoBuilder {
-    private BigDecimal ammount;
+    private BigDecimal amount;
     private LocalDateTime dueDate;
     private Integer term;
 
@@ -15,8 +15,8 @@ public final class LoanDtoBuilder {
         return new LoanDtoBuilder();
     }
 
-    public LoanDtoBuilder withAmmount(BigDecimal ammount) {
-        this.ammount = ammount;
+    public LoanDtoBuilder withAmount(BigDecimal amount) {
+        this.amount = amount;
         return this;
     }
 
@@ -32,7 +32,7 @@ public final class LoanDtoBuilder {
 
     public LoanDto build() {
         LoanDto loanDto = new LoanDto();
-        loanDto.setAmmount(ammount);
+        loanDto.setAmount(amount);
         loanDto.setDueDate(dueDate);
         loanDto.setTerm(term);
         return loanDto;

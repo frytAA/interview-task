@@ -48,7 +48,7 @@ public class LoanApplicationControllerTest {
         LoanApplicationDto loanApplicationDto = LoanApplicationDtoBuilder
                 .aLoanApplicationDto()
                 .withTerm(40)
-                .withAmmount(BigDecimal.TEN)
+                .withAmount(BigDecimal.TEN)
                 .withCreationDate(LocalDateTime.now())
                 .build();
 

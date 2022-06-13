@@ -7,7 +7,7 @@ import java.time.ZoneOffset;
 public final class LoanEntityBuilder {
     private LocalDateTime creationDate = LocalDateTime.now(ZoneOffset.UTC);
     private LocalDateTime updateDate = null;
-    private BigDecimal ammount;
+    private BigDecimal amount;
     private LocalDateTime dueDate;
     private Integer term;
 
@@ -28,8 +28,8 @@ public final class LoanEntityBuilder {
         return this;
     }
 
-    public LoanEntityBuilder withAmmount(BigDecimal ammount) {
-        this.ammount = ammount;
+    public LoanEntityBuilder withAmount(BigDecimal amount) {
+        this.amount = amount;
         return this;
     }
 
@@ -47,7 +47,7 @@ public final class LoanEntityBuilder {
         LoanEntity loanEntity = new LoanEntity();
         loanEntity.setCreationDate(creationDate);
         loanEntity.setUpdateDate(updateDate);
-        loanEntity.setAmmount(ammount);
+        loanEntity.setAmount(amount);
         loanEntity.setDueDate(dueDate);
         loanEntity.setTerm(term);
         return loanEntity;

@@ -5,16 +5,16 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 public class LoanDto {
-    private BigDecimal ammount;
+    private BigDecimal amount;
     private LocalDateTime dueDate;
     private Integer term;
 
-    public BigDecimal getAmmount() {
-        return ammount;
+    public BigDecimal getAmount() {
+        return amount;
     }
 
-    public void setAmmount(BigDecimal ammount) {
-        this.ammount = ammount;
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
     }
 
     public LocalDateTime getDueDate() {

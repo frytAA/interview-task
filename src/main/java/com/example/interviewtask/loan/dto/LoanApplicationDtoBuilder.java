@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 
 public final class LoanApplicationDtoBuilder {
     private LocalDateTime creationDate;
-    private BigDecimal ammount;
+    private BigDecimal amount;
     private Integer term;
 
     private LoanApplicationDtoBuilder() {
@@ -20,8 +20,8 @@ public final class LoanApplicationDtoBuilder {
         return this;
     }
 
-    public LoanApplicationDtoBuilder withAmmount(BigDecimal ammount) {
-        this.ammount = ammount;
+    public LoanApplicationDtoBuilder withAmount(BigDecimal amount) {
+        this.amount = amount;
         return this;
     }
 
@@ -33,7 +33,7 @@ public final class LoanApplicationDtoBuilder {
     public LoanApplicationDto build() {
         LoanApplicationDto loanApplicationDto = new LoanApplicationDto();
         loanApplicationDto.setCreationDateTime(creationDate);
-        loanApplicationDto.setAmmount(ammount);
+        loanApplicationDto.setAmount(amount);
         loanApplicationDto.setTerm(term);
         return loanApplicationDto;
     }

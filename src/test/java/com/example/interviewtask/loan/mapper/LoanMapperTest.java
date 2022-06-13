@@ -22,7 +22,7 @@ public class LoanMapperTest {
         LocalDateTime dueDate = LocalDateTime.now();
         LoanEntity loanEntity = LoanEntityBuilder
                 .aLoanEntity()
-                .withAmmount(BigDecimal.TEN)
+                .withAmount(BigDecimal.TEN)
                 .withDueDate(dueDate)
                 .withTerm(TERM_DAYS)
                 .build();
@@ -32,7 +32,7 @@ public class LoanMapperTest {
 
         // then
         assertThat(loanDto.getDueDate()).isEqualTo(dueDate);
-        assertThat(loanDto.getAmmount()).isEqualTo(BigDecimal.TEN);
+        assertThat(loanDto.getAmount()).isEqualTo(BigDecimal.TEN);
         assertThat(loanDto.getTerm()).isEqualTo(TERM_DAYS);
     }
 
@@ -42,7 +42,7 @@ public class LoanMapperTest {
         LocalDateTime dueDate = LocalDateTime.now();
         LoanDto loanDto = LoanDtoBuilder
                 .aLoanDto()
-                .withAmmount(BigDecimal.TEN)
+                .withAmount(BigDecimal.TEN)
                 .withDueDate(dueDate)
                 .withTerm(TERM_DAYS)
                 .build();
@@ -52,7 +52,7 @@ public class LoanMapperTest {
 
         // then
         assertThat(loanEntity.getDueDate()).isEqualTo(dueDate);
-        assertThat(loanEntity.getAmmount()).isEqualTo(BigDecimal.TEN);
+        assertThat(loanEntity.getAmount()).isEqualTo(BigDecimal.TEN);
         assertThat(loanEntity.getTerm()).isEqualTo(TERM_DAYS);
     }
 }

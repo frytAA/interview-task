@@ -32,7 +32,7 @@ public class NightMaxAmountValidation implements LoanApplicationValidation {
     }
 
     private boolean isMaxLimitLoan(LoanApplicationDto loanApplicationDto) {
-        return loanApplicationDto.getAmmount().compareTo(BigDecimal.valueOf(MAX_AMOUNT)) == 0;
+        return loanApplicationDto.getAmount().compareTo(BigDecimal.valueOf(MAX_AMOUNT)) == 0;
     }
 
     private boolean isCreatedAtNight(LoanApplicationDto loanApplicationDto) {

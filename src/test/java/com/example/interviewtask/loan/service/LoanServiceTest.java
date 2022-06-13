@@ -41,18 +41,17 @@ public class LoanServiceTest {
 
         // then
         assertThat(saved.getDueDate()).isEqualTo(dueDate);
-        assertThat(saved.getAmmount()).isEqualTo(AMOUNT);
+        assertThat(saved.getAmount()).isEqualTo(AMOUNT);
         verify(loanRepository).save(loanEntity);
     }
 
     private LoanEntity buildLoanEntity(LocalDateTime dueDate) {
         return LoanEntityBuilder
                 .aLoanEntity()
-                .withAmmount(AMOUNT)
+                .withAmount(AMOUNT)
                 .withDueDate(dueDate)
                 .build();
     }
-
 
     @Test
     public void getLoan() {
@@ -67,6 +66,6 @@ public class LoanServiceTest {
         // then
         assertThat(loan).isPresent();
         assertThat(loan.get().getDueDate()).isEqualTo(dueDate);
-        assertThat(loan.get().getAmmount()).isEqualTo(AMOUNT);
+        assertThat(loan.get().getAmount()).isEqualTo(AMOUNT);
     }
 }

@@ -19,7 +19,7 @@ public class LoanCreatorService {
 
     public LoanEntity createLoan(LoanApplicationDto loanApplicationDto) {
         LoanEntity loanEntity = LoanEntityBuilder.aLoanEntity()
-                .withAmmount(loanApplicationDto.getAmmount())
+                .withAmount(loanApplicationDto.getAmount())
                 .withDueDate(calculateDueDate(loanApplicationDto))
                 .withTerm(loanApplicationDto.getTerm())
                 .build();

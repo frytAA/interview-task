@@ -36,7 +36,7 @@ class NightMaxAmountValidationTest {
         // given
         LoanApplicationDto loanApplicationDto = LoanApplicationDtoBuilder
                 .aLoanApplicationDto()
-                .withAmmount(BigDecimal.valueOf(VALID_AMOUNT))
+                .withAmount(BigDecimal.valueOf(VALID_AMOUNT))
                 .withCreationDate(VALID_DATE_TIME)
                 .build();
 
@@ -53,7 +53,7 @@ class NightMaxAmountValidationTest {
         // given
         LoanApplicationDto loanApplicationDto = LoanApplicationDtoBuilder
                 .aLoanApplicationDto()
-                .withAmmount(BigDecimal.valueOf(VALID_AMOUNT))
+                .withAmount(BigDecimal.valueOf(VALID_AMOUNT))
                 .withCreationDate(VALID_DATE_TIME)
                 .build();
 
@@ -69,7 +69,7 @@ class NightMaxAmountValidationTest {
         // given
         LoanApplicationDto loanApplicationDto = LoanApplicationDtoBuilder
                 .aLoanApplicationDto()
-                .withAmmount(BigDecimal.valueOf(MAX_LIMIT))
+                .withAmount(BigDecimal.valueOf(MAX_LIMIT))
                 .withCreationDate(VALID_DATE_TIME)
                 .build();
 
@@ -85,7 +85,7 @@ class NightMaxAmountValidationTest {
         // given
         LoanApplicationDto loanApplicationDto = LoanApplicationDtoBuilder
                 .aLoanApplicationDto()
-                .withAmmount(BigDecimal.valueOf(MAX_LIMIT))
+                .withAmount(BigDecimal.valueOf(MAX_LIMIT))
                 .withCreationDate(NIGHT_DATE_TIME)
                 .build();
 

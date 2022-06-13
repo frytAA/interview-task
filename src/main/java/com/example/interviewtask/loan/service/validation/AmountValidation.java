@@ -21,10 +21,10 @@ public class AmountValidation implements LoanApplicationValidation {
     }
 
     private boolean isMaxLimitValid(LoanApplicationDto loanApplicationDto) {
-        return loanApplicationDto.getAmmount().compareTo(BigDecimal.valueOf(MAX_AMOUNT)) <= 0;
+        return loanApplicationDto.getAmount().compareTo(BigDecimal.valueOf(MAX_AMOUNT)) <= 0;
     }
 
     private boolean isMinLimitValid(LoanApplicationDto loanApplicationDto) {
-        return loanApplicationDto.getAmmount().compareTo(BigDecimal.valueOf(MIN_AMOUNT)) >= 0;
+        return loanApplicationDto.getAmount().compareTo(BigDecimal.valueOf(MIN_AMOUNT)) >= 0;
     }
 }
