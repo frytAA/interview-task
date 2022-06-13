@@ -34,6 +34,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class LoanIntegrationTest {
     private static final int TERM = 100;
     private static final BigDecimal AMOUNT = BigDecimal.valueOf(1000);
+    public static final BigDecimal AMOUNT_AFTER_EXTENSION = BigDecimal.valueOf(1210.0);
     private final static BigDecimal RATE = BigDecimal.valueOf(1.1);
     private static final LocalDateTime LOAN_DUE_DATE = LocalDateTime.of(2022, 6, 12, 12, 0, 1);
     private static final LocalDateTime EXPECTED_DATE_AFTER_EXTENSION = LOAN_DUE_DATE.plusDays(TERM).plusDays(TERM);
@@ -102,6 +103,7 @@ public class LoanIntegrationTest {
         this.mockMvc.perform(get("/api/loans/1/get/"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.term").value(TERM))
+                .andExpect(jsonPath("$.amount").value(AMOUNT_AFTER_EXTENSION))
                 .andExpect(jsonPath("$.dueDate", is(EXPECTED_DATE_AFTER_EXTENSION.toString())));
 
         // then verify database state
